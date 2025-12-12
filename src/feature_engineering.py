@@ -17,18 +17,31 @@ class FeatureExtractor:
             max_features=max_features,
             ngram_range=ngram_range,
             min_df=2,
-            max_df=0.8
+            max_df=0.8,
+            strip_accents='unicode',
+            lowercase=True
         )
         
     def fit_transform(self, texts):
         """Fit vectorizer and transform texts"""
         print(f"Extracting features using TF-IDF...")
+        
+        if len(texts) == 0:
+            raise ValueError("Cannot extract features from empty text list")
+        
         features = self.vectorizer.fit_transform(texts)
         print(f"Feature matrix shape: {features.shape}")
+        print(f"Vocabulary size: {len(self.vectorizer.vocabulary_)}")
         return features.toarray()
     
     def transform(self, texts):
         """Transform texts using fitted vectorizer"""
+        if self.vectorizer is None:
+            raise ValueError("Vectorizer not fitted. Call fit_transform first.")
+        
+        if len(texts) == 0:
+            raise ValueError("Cannot transform empty text list")
+            
         return self.vectorizer.transform(texts).toarray()
     
     def get_feature_names(self):
@@ -38,7 +51,7 @@ class FeatureExtractor:
     def get_top_features(self, n=20):
         """Get top n features"""
         feature_names = self.get_feature_names()
-        return list(feature_names[:n])
+        return list(feature_names[:min(n, len(feature_names))])
 
 
 def prepare_train_test_split(df, text_column='processed_text', 
@@ -47,8 +60,21 @@ def prepare_train_test_split(df, text_column='processed_text',
     """Prepare train-test split with feature extraction"""
     print("Preparing train-test split...")
     
+    if len(df) == 0:
+        raise ValueError("DataFrame is empty")
+    
+    if text_column not in df.columns:
+        raise ValueError(f"Column '{text_column}' not found in DataFrame")
+    
+    if target_column not in df.columns:
+        raise ValueError(f"Column '{target_column}' not found in DataFrame")
+    
     X = df[text_column]
     y = df[target_column]
+    
+    # Check if we have enough samples
+    if len(X) < 10:
+        raise ValueError(f"Not enough samples: {len(X)}. Need at least 10 samples.")
     
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=test_size, random_state=random_state, stratify=y
