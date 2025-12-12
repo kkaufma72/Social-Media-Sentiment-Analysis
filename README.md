@@ -5,7 +5,7 @@
 
 A comprehensive sentiment analysis project using Natural Language Processing to classify social media text sentiment (positive, negative, neutral).
 
-## 🌟 Features
+##  Features
 
 - **Multiple ML Models**: Logistic Regression & Random Forest
 - **Advanced NLP**: Text preprocessing, tokenization, lemmatization
@@ -15,7 +15,7 @@ A comprehensive sentiment analysis project using Natural Language Processing to 
 - **Visualizations**: Confusion matrices, performance comparisons
 - **Production Ready**: Clean, modular code structure
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Installation
 ```bash
@@ -44,7 +44,7 @@ python demo.py --size large --model lr --test
 - `--model`: Model choice (lr/rf/all)
 - `--test`: Run predictions on sample texts
 
-## 📁 Project Structure
+## � Project Structure
 ```
 Social-Media-Sentiment-Analysis/
 ├── src/
@@ -63,14 +63,14 @@ Social-Media-Sentiment-Analysis/
 └── README.md                    # Documentation
 ```
 
-## 📊 Results
+##  Results
 
 | Model | Accuracy | Notes |
 |-------|----------|-------|
 | Logistic Regression | ~82% | Fast, interpretable |
 | Random Forest | ~79% | Robust, ensemble method |
 
-## 🛠️ Technologies
+##  Technologies
 
 - **Python 3.8+**
 - **scikit-learn** - Machine learning models
@@ -78,7 +78,7 @@ Social-Media-Sentiment-Analysis/
 - **Pandas & NumPy** - Data manipulation
 - **Matplotlib & Seaborn** - Visualization
 
-## 📝 Usage Example
+##  Usage Example
 ```python
 from src.data_preprocessing import TextPreprocessor
 from src.train_models import SentimentModelTrainer
@@ -100,7 +100,7 @@ trainer.train(X_train, y_train)
 prediction = trainer.predict(features)
 ```
 
-## 🔬 Advanced Features
+##  Advanced Features
 
 ### Model Persistence
 ```python
@@ -122,7 +122,7 @@ preprocessor = TextPreprocessor(
 )
 ```
 
-## 📈 Future Improvements
+## � Future Improvements
 
 - [ ] Deep learning models (LSTM, BERT)
 - [ ] Real-time sentiment analysis API
@@ -130,7 +130,7 @@ preprocessor = TextPreprocessor(
 - [ ] Aspect-based sentiment analysis
 - [ ] Web interface with Streamlit
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions welcome! Feel free to open issues or submit PRs.
 
@@ -149,9 +149,3 @@ Project Link: [https://github.com/kkaufma72/Social-Media-Sentiment-Analysis](htt
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- NLTK team for NLP tools
-- scikit-learn for ML framework
-- Open source community
