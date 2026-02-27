@@ -5,7 +5,12 @@ Streamlit App for Sentiment Analysis
 import sys
 import pandas as pd
 import numpy as np
+import nltk
 from sklearn.metrics import confusion_matrix
+
+# Download NLTK data before importing src modules
+for resource in ('punkt', 'punkt_tab', 'stopwords', 'wordnet'):
+    nltk.download(resource, quiet=True)
 
 sys.path.append('src')
 
